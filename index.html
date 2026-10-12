@@ -38,6 +38,7 @@
 }
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0}
 body{
   background:var(--bg);color:var(--ink);font-family:var(--font);font-stretch:100%;
@@ -202,6 +203,20 @@ textarea:focus-visible{border-color:var(--blue);outline:none;box-shadow:0 0 0 4p
   .btn{align-self:stretch;justify-content:center}
   .row .btn{flex:1}
 }
+/* ---------- Effet de remplissage (survol sur ordinateur, toucher sur mobile) ---------- */
+.btn{
+  background:linear-gradient(var(--blue),var(--blue)) left / 0% 100% no-repeat, var(--ink);
+  transition:background-size .35s cubic-bezier(.2,.7,.2,1), color .2s ease, transform .15s ease;
+}
+.btn:hover,.btn:active{background-size:100% 100%;opacity:1}
+.btn.ghost{background:linear-gradient(var(--ink),var(--ink)) left / 0% 100% no-repeat, transparent}
+.btn.ghost:hover,.btn.ghost:active{background-size:100% 100%;color:var(--bg)}
+.choice{
+  background:linear-gradient(var(--blue-soft),var(--blue-soft)) left / 0% 100% no-repeat, var(--surface);
+  transition:background-size .35s cubic-bezier(.2,.7,.2,1), border-color .15s ease, transform .15s ease;
+}
+.choice:hover,.choice:active{background-size:100% 100%}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
